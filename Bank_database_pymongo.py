@@ -4,12 +4,54 @@ class bank_database():
     client = MongoClient("mongodb://localhost:27017/")
     db = client["bank_database"]
 
-    def insert_detail(self,x, y, z):
+    def acc_search(self, x, y, z):
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[x]
         db1 = db[x]
-        db1.insert_one({"name": x, "Account no": y, "type": z})
+        for i in db1.find({"name": x, "Account no": y, "type": z}).limit(1):
+            return 1
+        
+    def ser_login_acc(self,x,y,z):
+        client = MongoClient("mongodb://localhost:27017/")
+        db = client["bank_database"]
+        collection = db[x]
+        db1 = db[x]
+        for i in db1.find({"name": x, "type": z,"aadhaar no":y}).limit(1):
+            return 1
+
+    def ser_rec_acc(self, x, y):
+        client = MongoClient("mongodb://localhost:27017/")
+        db = client["bank_database"]
+        collection = db[x]
+        db1 = db[x]
+        for i in db1.find({"name": x, "aadhaar no": y}).limit(1):
+            return 1
+
+    def ser_acc_pin(self, x, y, z):
+        client = MongoClient("mongodb://localhost:27017/")
+        db = client["bank_database"]
+        collection = db[x]
+        db1 = db[x]
+        for i in db1.find({"name": x, "Account no": y, "aadhaar no": z}).limit(1):
+            return 1
+
+    def disp_rec_acc(self, x, y):
+        client = MongoClient("mongodb://localhost:27017/")
+        db = client["bank_database"]
+        collection = db[x]
+        db1 = db[x]
+        for i in db1.find({"name": x, "aadhaar no": y}).limit(1):
+            print("Name of the account::", i["name"])
+            print("Account Number::", i["Account no"])
+            print("Type of the account::", i["type"])
+
+    def insert_detail(self, x, y, z, a):
+        client = MongoClient("mongodb://localhost:27017/")
+        db = client["bank_database"]
+        collection = db[x]
+        db1 = db[x]
+        db1.insert_one({"name": x, "Account no": y, "type": z, "aadhaar no": a})
 
     def display_detail(self, a, b, c):
         client = MongoClient("mongodb://localhost:27017/")
@@ -21,16 +63,16 @@ class bank_database():
             print("Account Number::", i["Account no"])
             print("Type of the account::", i["type"])
 
-    def insert_trans(self,a,b,c,r,s,t):
+    def insert_trans(self, a, b, c, r, s, t):
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
-        coll_name = str(a)+str(b)+str(c)+str("trans")
+        coll_name = str(a) + str(b) + str(c) + str("trans")
         collection = db[coll_name]
         db1 = db[coll_name]
-        db1.insert_one({"deposit":r, "withdraw":s, "balance":t})
+        db1.insert_one({"deposit": r, "withdraw": s, "balance": t})
 
-    def display_trans(self,a,b,c):
-        coll_name=str(a)+str(b)+str(c)+str("trans")
+    def display_trans(self, a, b, c):
+        coll_name = str(a) + str(b) + str(c) + str("trans")
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[coll_name]
@@ -39,24 +81,24 @@ class bank_database():
         for i in db2.find():
             print(i["deposit"], "\t\t\t", i["withdraw"], "\t\t\t", i["balance"])
 
-    def insert_balance(self,a,b,c,d):
-        coll_name = str(a)+str(b)+str(c)+str("bal")
+    def insert_balance(self, a, b, c, d):
+        coll_name = str(a) + str(b) + str(c) + str("bal")
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[coll_name]
         db2 = db[coll_name]
-        db2.insert_one({"name":a,"account no":b,"type":c,"current_balance":d})
+        db2.insert_one({"name": a, "account no": b, "type": c, "current_balance": d})
 
-    def drop_balance(self,a,b,c):
-        coll_name = str(a)+str(b)+str(c)+str("bal")
+    def drop_balance(self, a, b, c):
+        coll_name = str(a) + str(b) + str(c) + str("bal")
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[coll_name]
         db2 = db[coll_name]
         db2.drop()
 
-    def get_balance(self,a,b,c):
-        coll_name = str(a)+str(b)+str(c)+str("bal")
+    def get_balance(self, a, b, c):
+        coll_name = str(a) + str(b) + str(c) + str("bal")
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[coll_name]
@@ -64,25 +106,24 @@ class bank_database():
         for i in db2.find():
             return i["current_balance"]
 
-    def insert_pin(self,a,b,c,d):
-        coll_name = str(a) + str(b) +str(c)+str("pin")
+    def insert_pin(self, a, b, c, d):
+        coll_name = str(a) + str(b) + str(c) + str("pin")
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[coll_name]
         db2 = db[coll_name]
-        db2.insert_one({"name": a, "account no": b, "type": c, "pin":d})
+        db2.insert_one({"name": a, "account no": b, "type": c, "pin": d})
 
-    def drop_pin(self,a,b,c):
-        coll_name = str(a)+str(b)+str(c)+str("pin")
+    def drop_pin(self, a, b, c):
+        coll_name = str(a) + str(b) + str(c) + str("pin")
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[coll_name]
         db2 = db[coll_name]
         db2.drop()
 
-
-    def get_pin(self,a,b,c):
-        coll_name = str(a) + str(b) +str(c)+str("pin")
+    def get_pin(self, a, b, c):
+        coll_name = str(a) + str(b) + str(c) + str("pin")
         client = MongoClient("mongodb://localhost:27017/")
         db = client["bank_database"]
         collection = db[coll_name]
