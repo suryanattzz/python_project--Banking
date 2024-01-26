@@ -1,58 +1,54 @@
-# Flask Bank App
+# Python Bank Application with MongoDB
 
-Flask Bank App is a simple banking application built with Python using Flask for the web framework and MongoDB for data storage.
+This Python application simulates a basic banking system using MongoDB as the database.
 
 ## Features
 
-- **Account Management**: Create new accounts, login, and manage account details.
+- Create a new account
+- Login to an existing account
+- Forget PIN and recover account
+- Deposit and withdraw money
+- Check balance and view transaction history
 
-- **Transactions**: Deposit and withdraw funds securely.
+## Prerequisites
 
-- **Balance Inquiry**: Check your account balance and transaction history.
+- Python 3.x installed on your machine
+- MongoDB installed and running on `localhost:27017`
 
 ## Getting Started
-
-### Prerequisites
-
-- Python 3.x installed on your machine.
-- [MongoDB](https://docs.mongodb.com/manual/installation/) installed and running.
-
-### Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/flask-bank-app.git
-    cd flask-bank-app
+    git clone https://github.com/yourusername/bank-app-mongodb.git
+    cd bank-app-mongodb
     ```
 
 2. Install the required Python packages:
 
     ```bash
-    pip install -r requirements.txt
+    pip install pymongo
     ```
 
-### Usage
-
-1. Run the Flask application:
+3. Run the application:
 
     ```bash
-    python your_app_file.py
+    python bank_app.py
     ```
 
-2. Open your web browser and go to [http://localhost:5000/](http://localhost:5000/).
+## Application Structure
 
-3. Follow the on-screen instructions to create an account, log in, and perform transactions.
+- **bank_app.py**: Contains the main application logic.
+- **Bank_database_pymongo.py**: Defines the `bank_database` class for interacting with MongoDB.
 
-## Files and Directories
+## Usage
 
-- **app.py**: The main Flask application file.
-- **Bank_database_pymongo.py**: Module containing the MongoDB database operations.
-- **screenshots/**: Directory containing screenshots of the application.
+1. Follow the prompts to create a new account, login, or perform other banking operations.
 
-## Dependencies
+2. Forgetting PIN and recovering account involves providing valid details.
 
-- Flask
-- pymongo
+3. Transactions are recorded in MongoDB, and the balance is updated accordingly.
+
+
 
 
