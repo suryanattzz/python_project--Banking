@@ -1,4 +1,4 @@
-# Python Bank Application with MongoDB
+# Python Bank Program with MongoDB
 
 This Python code simulates a basic banking system using MongoDB as the database.
 
@@ -33,7 +33,7 @@ This Python code simulates a basic banking system using MongoDB as the database.
 3. Run the application:
 
     ```bash
-    python .py
+    python bank_pymongodb.py
     ```
 
 ## Application Structure
