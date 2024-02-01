@@ -20,7 +20,7 @@ This Python code simulates a basic banking system using MongoDB as the database.
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/bank-app-mongodb.git
+    git clone https://github.com/suryanattzz/python_project--Banking.git
     cd bank-app-mongodb
     ```
 
@@ -33,7 +33,7 @@ This Python code simulates a basic banking system using MongoDB as the database.
 3. Run the application:
 
     ```bash
-    python bank_app.py
+    python .py
     ```
 
 ## Application Structure
